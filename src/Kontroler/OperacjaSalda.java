@@ -19,14 +19,17 @@ public class OperacjaSalda extends IStrategiaOperacjiBankowej {
 
     @Override
     public void wykonaj() {
-        // 1.1 / 1.2: pobieranieDanychKonta(nrRachunku:int) : String
+        System.out.println("[OperacjaSalda] wykonaj() START nrRachunku=" + nrRachunku);
+
         String daneKonta = model.pobieranieDanychKonta(nrRachunku);
+        System.out.println("[OperacjaSalda] pobrano daneKonta (len=" + (daneKonta == null ? 0 : daneKonta.length()) + ")");
 
-        // 1.3 / 1.4: saldo = zparsujSaldo(daneKonta)
         String saldo = zparsujSaldo(daneKonta);
+        System.out.println("[OperacjaSalda] saldo komunikat przygotowany");
 
-        // 2: wyswietl(komunikat:string)
         monitor.wyswietl(saldo);
+
+        System.out.println("[OperacjaSalda] wykonaj() END");
     }
 
     /**

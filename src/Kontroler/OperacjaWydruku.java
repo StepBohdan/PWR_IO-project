@@ -21,29 +21,31 @@ public class OperacjaWydruku {
 
 
     public void drukuj() {
-        // 1.1 / 1.2: daneOperacji = pobieranieDanychOperacji(nrOperacji)
+        System.out.println("[OperacjaWydruku] drukuj() START nrOperacji=" + nrOperacji);
+
         String daneOperacji = model.pobieranieDanychOperacji(nrOperacji);
+        System.out.println("[OperacjaWydruku] pobrano daneOperacji (len=" + (daneOperacji == null ? 0 : daneOperacji.length()) + ")");
 
-        // 1.3 / 1.4: zparsowaneDane = zparsujDaneOperacji(daneOperacji)
         String zparsowaneDane = zparsujDaneOperacji(daneOperacji);
+        System.out.println("[OperacjaWydruku] zparsowaneDane (len=" + (zparsowaneDane == null ? 0 : zparsowaneDane.length()) + ")");
 
-        // 2 / 2.1: zweryfikowano = weryfikujDane(zparsowaneDane)
         boolean zweryfikowano = weryfikujDane(zparsowaneDane);
+        System.out.println("[OperacjaWydruku] weryfikujDane -> " + zweryfikowano);
 
-        // alt
         if (zweryfikowano) {
-            // 3: drukuj(dane:String)
+            System.out.println("[OperacjaWydruku] DRUKUJĘ...");
             drukarka.drukuj(zparsowaneDane);
         } else {
-            // 4: wyswietl(komunikat:String)
+            System.out.println("[OperacjaWydruku] NIE DRUKUJĘ -> komunikat na monitor");
             monitor.wyswietl("Nie można wydrukować potwierdzenia — niepoprawne dane operacji.");
         }
+
+        System.out.println("[OperacjaWydruku] drukuj() END");
     }
 
     private String zparsujDaneOperacji(String daneOperacji) {
         if (daneOperacji == null) return "";
 
-        // prosty “paragon”
         return "Nr operacji: " + nrOperacji + "\n" + "------------------------------\n" + daneOperacji.trim() + "\n" + "------------------------------\n";
     }
 

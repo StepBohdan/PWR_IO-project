@@ -26,12 +26,19 @@ public class AnulowanieOperacji {
      * @param nrOperacji
      */
     public void anuluj(String nrOperacji) {
-        boolean sukces = model.anulowanieOperacji(nrOperacji);
+        System.out.println("[AnulowanieOperacji] anuluj() START nrOperacji=" + nrOperacji);
 
-        // alt:
+        boolean sukces = model.anulowanieOperacji(nrOperacji);
+        System.out.println("[AnulowanieOperacji] model.anulowanieOperacji -> sukces=" + sukces);
+
         if (!sukces) {
+            System.out.println("[AnulowanieOperacji] anulowanie NIEUDANE -> komunikat na monitor");
             monitor.wyswietl("Nie udało się anulować operacji: " + nrOperacji);
         }
+
+        System.out.println("[AnulowanieOperacji] usuńKarte()");
         czytnik.usunKarte();
+
+        System.out.println("[AnulowanieOperacji] anuluj() END");
     }
 }

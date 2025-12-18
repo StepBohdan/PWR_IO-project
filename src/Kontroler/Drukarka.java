@@ -3,17 +3,12 @@ package Kontroler;
 public class Drukarka {
 
     public Drukarka() {
-        // TODO - implement Drukarka.Drukarka
-        throw new UnsupportedOperationException();
+        System.out.println("[Drukarka] init");
     }
 
-    /**
-     *
-     * @param dane
-     */
     public void drukuj(String dane) {
-        // TODO - implement Drukarka.drukuj
-        throw new UnsupportedOperationException();
+        System.out.println("[Drukarka] DRUKUJĘ:");
+        System.out.println(dane == null ? "" : dane);
+        System.out.println("[Drukarka] --- KONIEC WYDRUKU ---");
     }
-
 }

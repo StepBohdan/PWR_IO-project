@@ -3,28 +3,31 @@ package Kontroler;
 public class Monitor {
 
     public Monitor() {
-        // TODO - implement Monitor.Monitor
-        throw new UnsupportedOperationException();
+        System.out.println("[Monitor] init");
     }
 
-    /**
-     *
-     * @param komunikat
-     */
     public void wyswietl(String komunikat) {
-        // TODO - implement Monitor.wyswietl
-        throw new UnsupportedOperationException();
+        System.out.println("[Monitor] " + komunikat);
     }
 
-    /**
-     *
-     * @param komunikat
-     * @param opcje
-     * @return
-     */
     public String wyswietlOpcje(String komunikat, String[] opcje) {
-        // TODO - implement Monitor.wy?wietlOpcje
-        throw new UnsupportedOperationException();
-    }
+        System.out.println("[Monitor] " + komunikat);
 
+        if (opcje == null || opcje.length == 0) {
+            System.out.println("[Monitor] (brak opcji)");
+            return "";
+        }
+
+        System.out.print("[Monitor] opcje: ");
+        for (int i = 0; i < opcje.length; i++) {
+            System.out.print(opcje[i]);
+            if (i < opcje.length - 1) System.out.print(", ");
+        }
+        System.out.println();
+
+        // symulacja: wybieramy pierwszą opcję
+        String wybor = opcje[0];
+        System.out.println("[Monitor] wybrano: " + wybor);
+        return wybor;
+    }
 }

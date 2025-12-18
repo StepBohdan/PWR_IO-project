@@ -6,18 +6,19 @@ public class CzytnikKart {
 
     public CzytnikKart() {
         this.kartaWlozona = false;
+        System.out.println("[CzytnikKart] init");
     }
 
     public void wlozKarte() {
         this.kartaWlozona = true;
+        System.out.println("[CzytnikKart] wlozKarte()");
     }
 
     public void usunKarte() {
-        // symulacja usunięcia karty z czytnika
         this.kartaWlozona = false;
+        System.out.println("[CzytnikKart] usunKarte()");
     }
 
-    // opcjonalnie do testów
     public boolean czyKartaWlozona() {
         return kartaWlozona;
     }

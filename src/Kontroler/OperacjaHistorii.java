@@ -26,17 +26,15 @@ public class OperacjaHistorii extends IStrategiaOperacjiBankowej {
 
     @Override
     public void wykonaj() {
-        // 1.1 / 1.2: pobieranieHistorii(nrRachunku:int) : String[]
+        System.out.println("[OperacjaHistorii] wykonaj() START nrRachunku=" + nrRachunku);
+
         String[] historiaOperacji = model.pobieranieHistorii(nrRachunku);
+        System.out.println("[OperacjaHistorii] pobrano historię: " + (historiaOperacji == null ? "null" : historiaOperacji.length + " pozycji"));
 
-        // 1.3 / 1.4: komunikat = zparsujHistorie(historiaOperacji)
         String komunikat = zparsujHistorie(historiaOperacji);
-
-        // 2: wyswietl(komunikat)
         monitor.wyswietl(komunikat);
 
-        // 4: wykonaj() -> OperacjaSalda
-        operacjaSalda.wykonaj();
+        System.out.println("[OperacjaHistorii] wykonaj() END");
     }
 
     /**

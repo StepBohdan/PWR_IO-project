@@ -2,28 +2,29 @@ package Kontroler;
 
 public class DozownikBanknotow {
 
+
+    private float symulowanaKwotaWczytana = 20.0f;
+
     public DozownikBanknotow() {
-        // TODO - implement DozownikBanknotow.DozownikBanknotow
-        throw new UnsupportedOperationException();
+        System.out.println("[DozownikBanknotow] init");
     }
 
-    /**
-     *
-     * @param kwota
-     */
     public void wydajBanknoty(float kwota) {
-        // TODO - implement DozownikBanknotow.wydajBanknoty
-        throw new UnsupportedOperationException();
+        System.out.println("[DozownikBanknotow] wydajBanknoty(kwota=" + kwota + ")");
+
     }
 
     public float zliczBanknoty() {
-        // TODO - implement DozownikBanknotow.zliczBanknoty
-        throw new UnsupportedOperationException();
+        System.out.println("[DozownikBanknotow] zliczBanknoty() -> " + symulowanaKwotaWczytana);
+        return symulowanaKwotaWczytana;
     }
 
     public void zwrocBanknoty() {
-        // TODO - implement DozownikBanknotow.zwr??Banknoty
-        throw new UnsupportedOperationException();
+        System.out.println("[DozownikBanknotow] zwrocBanknoty()");
     }
 
+
+    public void ustawSymulowanaKwote(float kwota) {
+        this.symulowanaKwotaWczytana = kwota;
+    }
 }

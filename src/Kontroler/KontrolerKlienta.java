@@ -35,9 +35,12 @@ public class KontrolerKlienta {
     public void wplataGotowki() {
         // 1.1: OperacjaWplaty(...)
         strategiaOperacjiBankowej = new OperacjaWplaty(model, nrRachunku, drukarka, dozownik, monitor);
+        System.out.println("[KontrolerKlienta] utworzono strategię: " + strategiaOperacjiBankowej.getClass().getSimpleName());
 
         // 1.2: wykonaj()
         strategiaOperacjiBankowej.wykonaj();
+
+        System.out.println("[KontrolerKlienta] wplataGotowki() END");
     }
 
     public void przelew() {
@@ -61,16 +64,19 @@ public class KontrolerKlienta {
     }
 
     public void anulowanieOperacji() {
-        // 1.1: AnulowanieOperacji(model, monitor, czytnik)
+        System.out.println("[KontrolerKlienta] anulowanieOperacji() START  nrOperacji=" + nrOperacji);
+
         AnulowanieOperacji anulowanie = new AnulowanieOperacji(model, monitor, czytnik);
 
-        // 1.2: anuluj(nrOperacji:String)
         if (nrOperacji == null) {
+            System.out.println("[KontrolerKlienta] brak nrOperacji -> STOP");
             monitor.wyswietl("Brak numeru operacji do anulowania.");
             return;
         }
 
         anulowanie.anuluj(nrOperacji.toString());
+
+        System.out.println("[KontrolerKlienta] anulowanieOperacji() END");
     }
 
 }
