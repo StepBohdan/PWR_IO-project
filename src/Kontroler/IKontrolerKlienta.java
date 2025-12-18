@@ -2,16 +2,16 @@ package Kontroler;
 
 public interface IKontrolerKlienta {
 
-	void wyplataGotowki();
+    void wyplataGotowki();
 
-	void wplataGotowki();
+    void wplataGotowki();
 
-	void przelew();
+    void przelew();
 
-	void wyborJezykuInterfejsu();
+    void wyborJezykuInterfejsu();
 
-	void wyswietlenieSalda();
+    void wyswietlenieSalda();
 
-	void wyswietlenieHistoriiOperacji();
+    void wyswietlenieHistoriiOperacji();
 
 }

@@ -1,28 +1,29 @@
 package Model;
 
+import Model.*;
 
 public class OperacjaPrzelewu extends DekoratorOperacji {
 
-	private int nrOperacji;
-	private Klient klienci;
+    private Klient klienci;
 
-	/**
-	 * 
-	 * @param nrOperacji
-	 * @param nadawca
-	 * @param odbiorca
-	 */
-	public OperacjaPrzelewu(int nrOperacji, Klient nadawca, Klient odbiorca) {
-		// TODO - implement OperacjaPrzelewu.OperacjaPrzelewu
-		throw new UnsupportedOperationException();
-	}
+    /**
+     *
+     * @param nrOperacji
+     * @param nadawca
+     * @param odbiorca
+     */
+    public OperacjaPrzelewu(String nrOperacji, Klient nadawca, Klient odbiorca) {
+        // TODO - implement OperacjaPrzelewu.OperacjaPrzelewu
+        throw new UnsupportedOperationException();
+    }
 
-	public Klient dajObriorce() {
-		// TODO - implement OperacjaPrzelewu.dajObriorce
-		throw new UnsupportedOperationException();
-	}
+    public Klient dajObriorce() {
+        // TODO - implement OperacjaPrzelewu.dajObriorce
+        throw new UnsupportedOperationException();
+    }
 
     public String opisz() {
+        // TODO - implement OperacjaPrzelewu.opisz
         throw new UnsupportedOperationException();
     }
 

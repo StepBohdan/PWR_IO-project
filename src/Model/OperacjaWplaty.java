@@ -1,22 +1,21 @@
 package Model;
 
-
 public class OperacjaWplaty extends DekoratorOperacji {
 
-	private int nrOperacji;
-	private Klient klient;
+    private Klient klient;
 
-	/**
-	 * 
-	 * @param nrOperacji
-	 * @param klient
-	 */
-	public OperacjaWplaty(int nrOperacji, Klient klient) {
-		// TODO - implement OperacjaWplaty.OperacjaWplaty
-		throw new UnsupportedOperationException();
-	}
+    /**
+     *
+     * @param nrOperacji
+     * @param klient
+     */
+    public OperacjaWplaty(String nrOperacji, Klient klient) {
+        // TODO - implement OperacjaWplaty.OperacjaWplaty
+        throw new UnsupportedOperationException();
+    }
 
     public String opisz() {
+        // TODO - implement OperacjaWplaty.opisz
         throw new UnsupportedOperationException();
     }
 

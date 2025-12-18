@@ -1,36 +1,30 @@
 package Kontroler;
 
+import Model.*;
 
-public class OperacjaPrzelewu extends IStrategiaOperacjiBankowej {
+public class OperacjaPrzelewu extends DekoratorOperacji {
 
-	private int nrRachunkuOdbiorcy;
-	private float kwota;
+    private Klient klienci;
 
-	public void wykonaj() {
-		// TODO - implement OperacjaPrzelewu.wykonaj
-		throw new UnsupportedOperationException();
-	}
+    /**
+     *
+     * @param nrOperacji
+     * @param nadawca
+     * @param odbiorca
+     */
+    public OperacjaPrzelewu(String nrOperacji, Klient nadawca, Klient odbiorca) {
+        // TODO - implement OperacjaPrzelewu.OperacjaPrzelewu
+        throw new UnsupportedOperationException();
+    }
 
-	/**
-	 * 
-	 * @param drukarka
-	 */
-	public void wykonaj(Drukarka drukarka) {
+    public Klient dajObriorce() {
+        // TODO - implement OperacjaPrzelewu.dajObriorce
+        throw new UnsupportedOperationException();
+    }
 
-	}
-
-	/**
-	 * 
-	 * @param model
-	 * @param nrRachunkuNadawcy
-	 * @param nrRachunkuOdbiorcy
-	 * @param kwota
-	 * @param drukarka
-	 * @param dozownik
-	 * @param monitor
-	 */
-	public OperacjaPrzelewu(IModel model, int nrRachunkuNadawcy, int nrRachunkuOdbiorcy, float kwota, Drukarka drukarka, DozownikBanknotow dozownik, Monitor monitor) {
-
-	}
+    public String opisz() {
+        // TODO - implement OperacjaPrzelewu.opisz
+        throw new UnsupportedOperationException();
+    }
 
 }

@@ -12,7 +12,6 @@ public class FabrykaOperacjiWyplaty implements IFabrykaOperacji {
 	 * @param operacja
 	 */
 	public FabrykaOperacjiWyplaty(Klient klient, IOperacja operacja) {
-		// TODO - implement FabrykaOperacjiWyplaty.FabrykaOperacjiWyplaty
 		throw new UnsupportedOperationException();
 	}
 
@@ -21,7 +20,6 @@ public class FabrykaOperacjiWyplaty implements IFabrykaOperacji {
      * @param opis
      */
 	public IOperacja utworzOperacje(String opis) {
-		// TODO - implement FabrykaOperacjiWyplaty.utworzOperacje
 		throw new UnsupportedOperationException();
 	}
 

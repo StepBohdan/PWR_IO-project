@@ -2,42 +2,42 @@ package Kontroler;
 
 public interface IModel {
 
-	/**
-	 * 
-	 * @param nrOperacji
-	 */
-	boolean anulowanieOperacji(int nrOperacji);
+    /**
+     *
+     * @param nrRachunku
+     */
+    String pobieranieDanychKonta(int nrRachunku);
 
-	/**
-	 * 
-	 * @param nrRachunku
-	 */
-	String pobieranieDanychKonta(int nrRachunku);
+    /**
+     *
+     * @param nrRachunku
+     */
+    String[] pobieranieHistorii(int nrRachunku);
 
-	/**
-	 * 
-	 * @param nrOperacji
-	 */
-	String pobieranieDanychOperacji(int nrOperacji);
+    /**
+     *
+     * @param nrRachunku
+     * @param kwota
+     */
+    boolean wyplacanieSrodkow(int nrRachunku, float kwota);
 
-	/**
-	 * 
-	 * @param nrRachunku
-	 */
-	String[] pobieranieHistorii(int nrRachunku);
+    /**
+     *
+     * @param nrRachunku
+     * @param kwota
+     */
+    boolean wplacanieSrodkow(int nrRachunku, float kwota);
 
-	/**
-	 * 
-	 * @param nrRachunku
-	 * @param kwota
-	 */
-	boolean wplacaniesrodkow(int nrRachunku, float kwota);
+    /**
+     *
+     * @param nrOperacji
+     */
+    String pobieranieDanychOperacji(String nrOperacji);
 
-	/**
-	 * 
-	 * @param nrRachunku
-	 * @param kwota
-	 */
-	boolean wyplacanieSrodkow(int nrRachunku, float kwota);
+    /**
+     *
+     * @param nrOperacji
+     */
+    boolean anulowanieOperacji(String nrOperacji);
 
 }

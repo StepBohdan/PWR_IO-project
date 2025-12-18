@@ -2,12 +2,15 @@ package Kontroler;
 
 public abstract class IStrategiaOperacjiBankowej {
 
-	protected int nrRachunku;
-	protected IModel model;
+    protected IModel model;
+    protected int nrRachunku;
+    protected Drukarka drukarka;
+    protected DozownikBanknotow dozownik;
+    protected Monitor monitor;
 
-	public void wykowaj() {
-		// TODO - implement IStrategiaOperacjiBankowej.wykowaj
-		throw new UnsupportedOperationException();
-	}
+    private void wykonaj() {
+        // TODO - implement IStrategiaOperacjiBankowej.wykonaj
+        throw new UnsupportedOperationException();
+    }
 
 }

@@ -2,9 +2,9 @@ package Model;
 
 public interface IOperacja {
 
-	int dajNrOperacji();
+    String dajNrOperacji();
 
-	Klient dajKlienta();
+    Klient dajKlienta();
 
     String opisz();
 

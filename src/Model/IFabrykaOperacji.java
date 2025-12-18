@@ -1,10 +1,11 @@
-
 package Model;
+
 public interface IFabrykaOperacji {
 
-	/**
-	 * 
-	 * @param opis
-	 */
-	IOperacja utworzOperacje(String opis);
+    /**
+     *
+     * @param opis
+     */
+    IOperacja utworzOperacje(String opis);
+
 }
