@@ -1,33 +1,20 @@
 package Model;
 
-
 public class FabrykaOperacjiPrzelewu implements IFabrykaOperacji {
 
-    private IOperacja operacja;
-    private Klient[] klienci;
+    private final Klient nadawca;
+    private final Klient odbiorca;
 
-    /**
-     *
-     * @param opis
-     */
-    public Model.IOperacja utworzOperacje(String opis) {
-        // TODO - implement FabrykaOperacjiPrzelewu.utworzOperacje
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     *
-     * @param nadawca
-     * @param odbiorca
-     * @param operacja
-     */
-    public FabrykaOperacjiPrzelewu(Klient nadawca, Klient odbiorca, IOperacja operacja) {
-        // TODO - implement FabrykaOperacjiPrzelewu.FabrykaOperacjiPrzelewu
-        throw new UnsupportedOperationException();
+    public FabrykaOperacjiPrzelewu(Klient nadawca, Klient odbiorca) {
+        if (nadawca == null || odbiorca == null) {
+            throw new IllegalArgumentException("Nadawca i odbiorca nie mogą być null");
+        }
+        this.nadawca = nadawca;
+        this.odbiorca = odbiorca;
     }
 
     @Override
-    public Model.IOperacja utworzOperacje(String opis) {
-        return null;
+    public IOperacja utworzOperacje(String opis) {
+        return new OperacjaPrzelewu(nadawca, odbiorca, opis);
     }
 }

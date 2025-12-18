@@ -1,30 +1,41 @@
 package Model;
 
-import Model.*;
+import java.util.UUID;
 
-public class OperacjaPrzelewu extends DekoratorOperacji {
+public class OperacjaPrzelewu implements IOperacja {
 
-    private Klient klienci;
+    private final String nrOperacji;
+    private final Klient nadawca;
+    private final Klient odbiorca;
+    private final String opis;
 
-    /**
-     *
-     * @param nrOperacji
-     * @param nadawca
-     * @param odbiorca
-     */
-    public OperacjaPrzelewu(String nrOperacji, Klient nadawca, Klient odbiorca) {
-        // TODO - implement OperacjaPrzelewu.OperacjaPrzelewu
-        throw new UnsupportedOperationException();
+    public OperacjaPrzelewu(Klient nadawca, Klient odbiorca, String opis) {
+        if (nadawca == null || odbiorca == null) {
+            throw new IllegalArgumentException("Nadawca i odbiorca nie mogą być null");
+        }
+        this.nadawca = nadawca;
+        this.odbiorca = odbiorca;
+        this.opis = (opis == null) ? "" : opis;
+        this.nrOperacji = UUID.randomUUID().toString();
     }
 
-    public Klient dajObriorce() {
-        // TODO - implement OperacjaPrzelewu.dajObriorce
-        throw new UnsupportedOperationException();
+    @Override
+    public String dajNrOperacji() {
+        return nrOperacji;
     }
 
+    @Override
+    public Klient dajKlienta() {
+        // Обычно "клиент операции" — инициатор (nadawca)
+        return nadawca;
+    }
+
+    public Klient dajOdbiorce() {
+        return odbiorca;
+    }
+
+    @Override
     public String opisz() {
-        // TODO - implement OperacjaPrzelewu.opisz
-        throw new UnsupportedOperationException();
+        return "PRZELEW: " + opis;
     }
-
 }

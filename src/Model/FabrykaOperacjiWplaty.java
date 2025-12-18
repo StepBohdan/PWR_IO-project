@@ -2,26 +2,15 @@ package Model;
 
 public class FabrykaOperacjiWplaty implements IFabrykaOperacji {
 
-    private Klient klient;
-    private IOperacja operacja;
+    private final Klient klient;
 
-    /**
-     *
-     * @param klient
-     * @param operacja
-     */
-    public FabrykaOperacjiWplaty(Klient klient, Operacja operacja) {
-        // TODO - implement FabrykaOperacjiWplaty.FabrykaOperacjiWplaty
-        throw new UnsupportedOperationException();
+    public FabrykaOperacjiWplaty(Klient klient) {
+        if (klient == null) throw new IllegalArgumentException("Klient nie może być null");
+        this.klient = klient;
     }
 
-    /**
-     *
-     * @param opis
-     */
+    @Override
     public IOperacja utworzOperacje(String opis) {
-        // TODO - implement FabrykaOperacjiWplaty.utworzOperacje
-        throw new UnsupportedOperationException();
+        return new OperacjaWplaty(klient, opis);
     }
-
 }
