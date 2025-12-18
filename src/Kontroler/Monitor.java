@@ -20,8 +20,9 @@ public class Monitor {
      *
      * @param komunikat
      * @param opcje
+     * @return
      */
-    public void wyswietlOpcje(String komunikat, String[] opcje) {
+    public String wyswietlOpcje(String komunikat, String[] opcje) {
         // TODO - implement Monitor.wy?wietlOpcje
         throw new UnsupportedOperationException();
     }

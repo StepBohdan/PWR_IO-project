@@ -1,8 +1,8 @@
 package Kontroler;
 import java.util.UUID;
+import Model.IModel;
 
 public class KontrolerKlienta {
-
     private IModel model;
     private int nrRachunku;
     private Drukarka drukarka;
@@ -12,13 +12,19 @@ public class KontrolerKlienta {
     private UUID nrOperacji;
     private IStrategiaOperacjiBankowej strategiaOperacjiBankowej;
 
-    /**
-     *
-     * @param model
-     */
     public KontrolerKlienta(IModel model) {
-        // TODO - implement KontrolerKlienta.KontrolerKlienta
-        throw new UnsupportedOperationException();
+        if (model == null) {
+            throw new IllegalArgumentException("model nie może być null");
+        }
+        this.model = model;
+
+        this.monitor = new Monitor();
+        this.drukarka = new Drukarka();
+        this.dozownik = new DozownikBanknotow();
+        this.czytnik = new CzytnikKart();
+        this.nrRachunku = 0;
+        this.nrOperacji = null;
+        this.strategiaOperacjiBankowej = null;
     }
 
     public void wyplataGotowki() {
@@ -27,8 +33,11 @@ public class KontrolerKlienta {
     }
 
     public void wplataGotowki() {
-        // TODO - implement KontrolerKlienta.wp?ataGot?wki
-        throw new UnsupportedOperationException();
+        // 1.1: OperacjaWplaty(...)
+        strategiaOperacjiBankowej = new OperacjaWplaty(model, nrRachunku, drukarka, dozownik, monitor);
+
+        // 1.2: wykonaj()
+        strategiaOperacjiBankowej.wykonaj();
     }
 
     public void przelew() {
@@ -52,8 +61,16 @@ public class KontrolerKlienta {
     }
 
     public void anulowanieOperacji() {
-        // TODO - implement KontrolerKlienta.anulowanieOperacji
-        throw new UnsupportedOperationException();
+        // 1.1: AnulowanieOperacji(model, monitor, czytnik)
+        AnulowanieOperacji anulowanie = new AnulowanieOperacji(model, monitor, czytnik);
+
+        // 1.2: anuluj(nrOperacji:String)
+        if (nrOperacji == null) {
+            monitor.wyswietl("Brak numeru operacji do anulowania.");
+            return;
+        }
+
+        anulowanie.anuluj(nrOperacji.toString());
     }
 
 }

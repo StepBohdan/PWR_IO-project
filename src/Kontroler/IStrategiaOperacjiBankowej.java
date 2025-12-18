@@ -1,4 +1,5 @@
 package Kontroler;
+import Model.IModel;
 
 public abstract class IStrategiaOperacjiBankowej {
 
@@ -8,9 +9,11 @@ public abstract class IStrategiaOperacjiBankowej {
     protected DozownikBanknotow dozownik;
     protected Monitor monitor;
 
-    private void wykonaj() {
+    public void wykonaj() {
         // TODO - implement IStrategiaOperacjiBankowej.wykonaj
         throw new UnsupportedOperationException();
     }
+
+
 
 }

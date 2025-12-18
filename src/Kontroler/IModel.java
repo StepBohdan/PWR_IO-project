@@ -12,7 +12,7 @@ public interface IModel {
      *
      * @param nrRachunku
      */
-    String[] pobieranieHistorii(int nrRachunku);
+    String[] pobieranieHistorii(String nrRachunku);
 
     /**
      *

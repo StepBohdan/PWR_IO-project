@@ -2,14 +2,23 @@ package Kontroler;
 
 public class CzytnikKart {
 
+    private boolean kartaWlozona;
+
     public CzytnikKart() {
-        // TODO - implement CzytnikKart.CzytnikKart
-        throw new UnsupportedOperationException();
+        this.kartaWlozona = false;
     }
 
-    public void usuńKarte() {
-        // TODO - implement CzytnikKart.usu?Karte
-        throw new UnsupportedOperationException();
+    public void wlozKarte() {
+        this.kartaWlozona = true;
     }
 
+    public void usunKarte() {
+        // symulacja usunięcia karty z czytnika
+        this.kartaWlozona = false;
+    }
+
+    // opcjonalnie do testów
+    public boolean czyKartaWlozona() {
+        return kartaWlozona;
+    }
 }
