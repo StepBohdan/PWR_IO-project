@@ -1,10 +1,6 @@
 package Kontroler;
 
 public class DozownikBanknotow {
-
-
-    private float symulowanaKwotaWczytana = 20.0f;
-
     public DozownikBanknotow() {
         System.out.println("[DozownikBanknotow] init");
     }
@@ -15,16 +11,12 @@ public class DozownikBanknotow {
     }
 
     public float zliczBanknoty() {
-        System.out.println("[DozownikBanknotow] zliczBanknoty() -> " + symulowanaKwotaWczytana);
-        return symulowanaKwotaWczytana;
+        System.out.println("[DozownikBanknotow] zliczBanknoty() -> " + 20.0f);
+        // simulated return value
+        return 20.0f;
     }
 
     public void zwrocBanknoty() {
         System.out.println("[DozownikBanknotow] zwrocBanknoty()");
-    }
-
-
-    public void ustawSymulowanaKwote(float kwota) {
-        this.symulowanaKwotaWczytana = kwota;
     }
 }

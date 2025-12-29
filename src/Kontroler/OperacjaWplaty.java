@@ -5,9 +5,6 @@ import Model.IModel;
 public class OperacjaWplaty extends IStrategiaOperacjiBankowej {
 
     public OperacjaWplaty(IModel model, int nrRachunku, Drukarka drukarka, DozownikBanknotow dozownik, Monitor monitor) {
-        if (model == null || drukarka == null || dozownik == null || monitor == null) {
-            throw new IllegalArgumentException("model/drukarka/dozownik/monitor nie mogą być null");
-        }
         this.model = model;
         this.nrRachunku = nrRachunku;
         this.drukarka = drukarka;
@@ -37,7 +34,7 @@ public class OperacjaWplaty extends IStrategiaOperacjiBankowej {
         float zliczonaKwota = dozownik.zliczBanknoty();
         System.out.println("[OperacjaWplaty] zliczonaKwota=" + zliczonaKwota + " oczekiwana=" + kwota);
 
-        if (Float.compare(kwota, zliczonaKwota) != 0) {
+        if (kwota != zliczonaKwota) {
             System.out.println("[OperacjaWplaty] NIEZGODNOŚĆ kwot -> zwrot banknotów i STOP");
             monitor.wyswietl("Błąd: wybrana kwota (" + kwota + ") != zliczona kwota (" + zliczonaKwota + ").");
             dozownik.zwrocBanknoty();
@@ -60,11 +57,11 @@ public class OperacjaWplaty extends IStrategiaOperacjiBankowej {
         String opcja = monitor.wyswietlOpcje("Czy wydrukować potwierdzenie?", new String[] { "Tak", "Nie" });
         System.out.println("[OperacjaWplaty] opcja wydruku=" + opcja);
 
-        if ("Tak".equalsIgnoreCase(opcja)) {
+        if (opcja.equalsIgnoreCase("tak")) {
             String nrOperacji = "NROP-" + System.currentTimeMillis();
             System.out.println("[OperacjaWplaty] tworzę OperacjaWydruku nrOperacji=" + nrOperacji);
 
-            OperacjaWydruku wydruk = new OperacjaWydruku(model, drukarka, nrOperacji, this, monitor);
+            OperacjaWydruku wydruk = new OperacjaWydruku(model, drukarka, nrOperacji, monitor);
             wydruk.drukuj();
         }
 

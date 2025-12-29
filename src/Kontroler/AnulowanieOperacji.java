@@ -14,9 +14,6 @@ public class AnulowanieOperacji {
      * @param czytnik
      */
     public AnulowanieOperacji(IModel model, Monitor monitor, CzytnikKart czytnik) {
-        if (model == null || monitor == null || czytnik == null) {
-            throw new IllegalArgumentException("model/monitor/czytnik nie mogą być null");
-        }
         this.model = model;
         this.monitor = monitor;
         this.czytnik = czytnik;
@@ -31,7 +28,10 @@ public class AnulowanieOperacji {
         boolean sukces = model.anulowanieOperacji(nrOperacji);
         System.out.println("[AnulowanieOperacji] model.anulowanieOperacji -> sukces=" + sukces);
 
-        if (!sukces) {
+        if (sukces) {
+            System.out.println("[AnulowanieOperacji] anulowanie POWIODŁO SIĘ -> komunikat na monitor");
+            monitor.wyswietl("Operacja została anulowana.");
+        } else {
             System.out.println("[AnulowanieOperacji] anulowanie NIEUDANE -> komunikat na monitor");
             monitor.wyswietl("Nie udało się anulować operacji: " + nrOperacji);
         }

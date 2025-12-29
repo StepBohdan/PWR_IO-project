@@ -2,7 +2,6 @@ package Kontroler;
 import Model.IModel;
 
 public abstract class IStrategiaOperacjiBankowej {
-
     protected IModel model;
     protected int nrRachunku;
     protected Drukarka drukarka;
@@ -10,10 +9,6 @@ public abstract class IStrategiaOperacjiBankowej {
     protected Monitor monitor;
 
     public void wykonaj() {
-        // TODO - implement IStrategiaOperacjiBankowej.wykonaj
         throw new UnsupportedOperationException();
     }
-
-
-
 }

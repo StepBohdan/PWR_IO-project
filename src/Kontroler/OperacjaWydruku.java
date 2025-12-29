@@ -8,14 +8,11 @@ public class OperacjaWydruku {
     private final Monitor monitor;
     private final String nrOperacji;
 
-    public OperacjaWydruku(IModel model, Drukarka drukarka, String nrOperacji, IStrategiaOperacjiBankowej operacja, Monitor monitor) {
-        if (model == null || drukarka == null || monitor == null) {
-            throw new IllegalArgumentException("model/drukarka/monitor nie mogą być null");
-        }
+    public OperacjaWydruku(IModel model, Drukarka drukarka, String nrOperacji, Monitor monitor) {
         this.model = model;
         this.drukarka = drukarka;
         this.monitor = monitor;
-        this.nrOperacji = (nrOperacji == null) ? "" : nrOperacji;
+        this.nrOperacji = nrOperacji;
     }
 
 
@@ -27,7 +24,7 @@ public class OperacjaWydruku {
         System.out.println("[OperacjaWydruku] pobrano daneOperacji (len=" + (daneOperacji == null ? 0 : daneOperacji.length()) + ")");
 
         String zparsowaneDane = zparsujDaneOperacji(daneOperacji);
-        System.out.println("[OperacjaWydruku] zparsowaneDane (len=" + (zparsowaneDane == null ? 0 : zparsowaneDane.length()) + ")");
+        System.out.println("[OperacjaWydruku] zparsowaneDane (len=" + zparsowaneDane.length() + ")");
 
         boolean zweryfikowano = weryfikujDane(zparsowaneDane);
         System.out.println("[OperacjaWydruku] weryfikujDane -> " + zweryfikowano);

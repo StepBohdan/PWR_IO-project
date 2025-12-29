@@ -3,19 +3,16 @@ import java.util.UUID;
 import Model.IModel;
 
 public class KontrolerKlienta {
-    private IModel model;
-    private int nrRachunku;
-    private Drukarka drukarka;
-    private DozownikBanknotow dozownik;
-    private Monitor monitor;
-    private CzytnikKart czytnik;
-    private UUID uuid;
+    private final IModel model;
+    private final int nrRachunku;
+    private final Drukarka drukarka;
+    private final DozownikBanknotow dozownik;
+    private final Monitor monitor;
+    private final CzytnikKart czytnik;
+    private final UUID uuid;
     private IStrategiaOperacjiBankowej strategiaOperacjiBankowej;
 
     public KontrolerKlienta(IModel model) {
-        if (model == null) {
-            throw new IllegalArgumentException("model nie może być null");
-        }
         this.model = model;
 
         this.monitor = new Monitor();
@@ -28,7 +25,7 @@ public class KontrolerKlienta {
     }
 
     public void wyplataGotowki() {
-        // TODO - implement KontrolerKlienta.wyp?ataGot?wki
+        // TODO - implement KontrolerKlienta.wyplataGotowki
         throw new UnsupportedOperationException();
     }
 
