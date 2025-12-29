@@ -23,8 +23,6 @@ public class SystemSamoobslugiOperacjiBankowych {
             // 3) przykładowe wywołanie (test)
             System.out.println("[System] Uruchamiam: wplataGotowki()");
             kontroler.wplataGotowki();
-
-
         } catch (UnsupportedOperationException e) {
             System.out.println("[System] NIEZAIMPLEMENTOWANE: " + e);
             e.printStackTrace();

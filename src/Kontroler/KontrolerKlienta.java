@@ -9,7 +9,7 @@ public class KontrolerKlienta {
     private DozownikBanknotow dozownik;
     private Monitor monitor;
     private CzytnikKart czytnik;
-    private UUID nrOperacji;
+    private UUID uuid;
     private IStrategiaOperacjiBankowej strategiaOperacjiBankowej;
 
     public KontrolerKlienta(IModel model) {
@@ -23,7 +23,7 @@ public class KontrolerKlienta {
         this.dozownik = new DozownikBanknotow();
         this.czytnik = new CzytnikKart();
         this.nrRachunku = 0;
-        this.nrOperacji = null;
+        this.uuid = null;
         this.strategiaOperacjiBankowej = null;
     }
 
@@ -64,17 +64,17 @@ public class KontrolerKlienta {
     }
 
     public void anulowanieOperacji() {
-        System.out.println("[KontrolerKlienta] anulowanieOperacji() START  nrOperacji=" + nrOperacji);
+        System.out.println("[KontrolerKlienta] anulowanieOperacji() START  nrOperacji=" + uuid);
 
         AnulowanieOperacji anulowanie = new AnulowanieOperacji(model, monitor, czytnik);
 
-        if (nrOperacji == null) {
+        if (uuid == null) {
             System.out.println("[KontrolerKlienta] brak nrOperacji -> STOP");
             monitor.wyswietl("Brak numeru operacji do anulowania.");
             return;
         }
 
-        anulowanie.anuluj(nrOperacji.toString());
+        anulowanie.anuluj(uuid.toString());
 
         System.out.println("[KontrolerKlienta] anulowanieOperacji() END");
     }

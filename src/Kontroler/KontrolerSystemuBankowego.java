@@ -1,5 +1,8 @@
 package Kontroler;
 
+
+import Model.IModel;
+
 public class KontrolerSystemuBankowego implements IKontrolerSystemuBankowego {
 
     private IModel model;

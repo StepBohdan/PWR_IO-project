@@ -1,5 +1,7 @@
 package Kontroler;
 
+import Model.IModel;
+
 public class OperacjaWyplaty extends IStrategiaOperacjiBankowej {
 
     public void wykonaj() {
