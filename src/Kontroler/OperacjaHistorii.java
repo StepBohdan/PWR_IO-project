@@ -6,7 +6,7 @@ public class OperacjaHistorii extends IStrategiaOperacjiBankowej {
     private final IModel model;
     private final int nrRachunku;
     private final Monitor monitor;
-    private final OperacjaSalda operacjaSalda;
+    private OperacjaSalda operacjaSalda;
 
     /**
      * @param model
@@ -33,6 +33,9 @@ public class OperacjaHistorii extends IStrategiaOperacjiBankowej {
 
         String komunikat = zparsujHistorie(historiaOperacji);
         monitor.wyswietl(komunikat);
+        
+        operacjaSalda = new OperacjaSalda(model, nrRachunku, monitor);
+        operacjaSalda.wykonaj();
 
         System.out.println("[OperacjaHistorii] wykonaj() END");
     }

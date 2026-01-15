@@ -7,6 +7,7 @@ public abstract class IStrategiaOperacjiBankowej {
     protected Drukarka drukarka;
     protected DozownikBanknotow dozownik;
     protected Monitor monitor;
+    protected String nrOperacji;
 
     public void wykonaj() {
         throw new UnsupportedOperationException();

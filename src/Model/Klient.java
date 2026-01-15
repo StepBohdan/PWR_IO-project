@@ -1,12 +1,11 @@
 package Model;
 public class Klient {
-
-	private int nr;
-	public String imie;
-	public String drugieImie;
-	public String nazwisko;
-	public int nrRachunku;
-	public int saldo;
+	
+	private String imie;
+	private String drugieImie;
+	private String nazwisko;
+	private int nrRachunku;
+	private float saldo;
 
 	/**
 	 * 
@@ -15,14 +14,37 @@ public class Klient {
 	 * @param nazwisko
 	 * @param saldo
 	 */
-	public Klient(int nrRachunku, String imie, String nazwisko, int saldo) {
-		// TODO - implement Klient.Klient
-		throw new UnsupportedOperationException();
+	public Klient(int nrRachunku, String imie, String drugieImie, String nazwisko, float saldo) {
+		this.nrRachunku = nrRachunku;
+		this.imie = imie;
+		this.drugieImie = drugieImie;
+		this.nazwisko = nazwisko;
+		this.saldo = saldo;
+	}
+	
+	public String dajImie() {
+		return this.imie;
+	}
+	
+	public String dajDrugieImie() {
+		return this.drugieImie;
+	}
+	
+	public String dajNazwisko() {
+		return this.nazwisko;
+	}
+	
+	public int dajNrRachunku() {
+		return this.nrRachunku;
+	}
+	
+	public float dajSaldo() {
+		return this.saldo;
 	}
 
 	public String opisz() {
-		// TODO - implement Klient.opisz
-		throw new UnsupportedOperationException();
+		String fullName = imie + (drugieImie != null && !drugieImie.trim().isEmpty() ? " " + drugieImie : "") + " " + nazwisko;
+		return String.format("Klient: %s%nNr rachunku: %d%nSaldo: %.2f", fullName, nrRachunku, saldo);
 	}
 
 }

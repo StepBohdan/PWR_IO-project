@@ -1,6 +1,9 @@
 package Kontroler;
 
 import Model.Model;
+import Model.SystemBankowy;
+import Model.IDAO;
+import Model.DAO;
 
 public class SystemSamoobslugiOperacjiBankowych {
 
@@ -14,7 +17,11 @@ public class SystemSamoobslugiOperacjiBankowych {
         try {
             // 1) model
             System.out.println("[System] Tworzenie modelu...");
-            Model model = new Model();
+
+            IDAO dao = new DAO();
+            SystemBankowy systemBankowy = new SystemBankowy(dao);
+            
+            Model model = new Model(dao, systemBankowy);
 
             // 2) kontroler klienta
             System.out.println("[System] Tworzenie KontrolerKlienta...");

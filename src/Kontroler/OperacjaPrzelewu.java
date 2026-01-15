@@ -2,7 +2,7 @@ package Kontroler;
 
 import Model.*;
 
-public class OperacjaPrzelewu extends DekoratorOperacji {
+public class OperacjaPrzelewu implements IOperacja {
 
     private Klient klienci;
 
@@ -20,6 +20,16 @@ public class OperacjaPrzelewu extends DekoratorOperacji {
     public Klient dajObriorce() {
         // TODO - implement OperacjaPrzelewu.dajObriorce
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public String dajNrOperacji() {
+        return "";
+    }
+
+    @Override
+    public Klient dajKlienta() {
+        return null;
     }
 
     public String opisz() {

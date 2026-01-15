@@ -2,8 +2,9 @@ package Model;
 
 import Model.*;
 
-public class OperacjaWyplaty extends DekoratorOperacji {
+public class OperacjaWyplaty implements IOperacja {
 
+    private String nrOperacji;
     private Klient klient;
 
     /**
@@ -12,13 +13,23 @@ public class OperacjaWyplaty extends DekoratorOperacji {
      * @param klient
      */
     public OperacjaWyplaty(String nrOperacji, Klient klient) {
-        // TODO - implement OperacjaWyplaty.OperacjaWyplaty
-        throw new UnsupportedOperationException();
+        this.nrOperacji = nrOperacji;
+        this.klient = klient;
     }
 
+    @Override
+    public String dajNrOperacji() {
+        return this.nrOperacji;
+    }
+
+    @Override
+    public Klient dajKlienta() {
+        return this.klient;
+    }
+
+    @Override
     public String opisz() {
-        // TODO - implement OperacjaWyplaty.opisz
-        throw new UnsupportedOperationException();
+        return "Operacja wypłaty nr: " + nrOperacji;
     }
 
 }

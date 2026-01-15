@@ -1,21 +1,25 @@
 package Model;
 
+import java.lang.classfile.instruction.ReturnInstruction;
 import java.util.*;
 
 public class Model implements IModel {
 
-    private IDAO dao; // пока не используем
+    private IDAO dao;
+    private SystemBankowy systemBankowy;
 
     // простая “база” в памяти
     private final Map<Integer, Float> salda = new HashMap<>();
     private final Map<String, String> operacje = new HashMap<>();
     private final Map<Integer, List<String>> historia = new HashMap<>();
 
-    public Model() {
-        // стартовые данные
-        salda.put(0, 0.0f);
-        historia.put(0, new ArrayList<>());
-        System.out.println("[Model] init");
+    public Model (IDAO dao, SystemBankowy systemBankowy) {
+        this.dao = dao;
+        this.systemBankowy = systemBankowy;
+//        // стартовые данные
+//        salda.put(0, 0.0f);
+//        historia.put(0, new ArrayList<>());
+//        System.out.println("[Model] init");
     }
 
     @Override
@@ -23,18 +27,10 @@ public class Model implements IModel {
         System.out.println("[Model] wplacanieSrodkow(nrRachunku=" + nrRachunku + ", kwota=" + kwota + ")");
 
         if (kwota <= 0) return false;
+        
+        boolean sukces = systemBankowy.wykonajWplate(nrRachunku, kwota);
 
-        float obecne = salda.getOrDefault(nrRachunku, 0.0f);
-        float nowe = obecne + kwota;
-        salda.put(nrRachunku, nowe);
-
-        String nrOperacji = "NROP-" + System.currentTimeMillis();
-        operacje.put(nrOperacji, "Wpłata: +" + kwota + " | saldo po: " + nowe);
-
-        historia.computeIfAbsent(nrRachunku, k -> new ArrayList<>())
-                .add("[" + nrOperacji + "] Wpłata +" + kwota + " => saldo: " + nowe);
-
-        return true;
+        return sukces;
     }
 
     @Override

@@ -41,7 +41,7 @@ public class SystemBankowy {
      * @param nrRachunku
      * @param kwota
      */
-    public boolean wykojWplate(int nrRachunku, float kwota) {
+    public boolean wykonajWplate(int nrRachunku, float kwota) {
         // TODO - implement SystemBankowy.wykojWplate
         throw new UnsupportedOperationException();
     }

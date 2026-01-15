@@ -65,13 +65,7 @@ public class KontrolerKlienta {
 
         AnulowanieOperacji anulowanie = new AnulowanieOperacji(model, monitor, czytnik);
 
-        if (uuid == null) {
-            System.out.println("[KontrolerKlienta] brak nrOperacji -> STOP");
-            monitor.wyswietl("Brak numeru operacji do anulowania.");
-            return;
-        }
-
-        anulowanie.anuluj(uuid.toString());
+        anulowanie.anuluj(strategiaOperacjiBankowej.nrOperacji);
 
         System.out.println("[KontrolerKlienta] anulowanieOperacji() END");
     }

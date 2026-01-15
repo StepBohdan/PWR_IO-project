@@ -1,17 +1,13 @@
 package Model;
 
-import java.util.UUID;
-
 public class OperacjaWplaty implements IOperacja {
 
-    private final String nrOperacji = UUID.randomUUID().toString();
+    private final String nrOperacji;
     private final Klient klient;
-    private final String opis;
 
-    public OperacjaWplaty(Klient klient, String opis) {
-        if (klient == null) throw new IllegalArgumentException("Klient nie może być null");
+    public OperacjaWplaty(String nrOperacji, Klient klient) {
+        this.nrOperacji = nrOperacji;
         this.klient = klient;
-        this.opis = (opis == null) ? "" : opis;
     }
 
     @Override
@@ -26,6 +22,6 @@ public class OperacjaWplaty implements IOperacja {
 
     @Override
     public String opisz() {
-        return "WPŁATA: " + opis;
+        return "Operacja wpłaty nr: " + nrOperacji;
     }
 }

@@ -1,25 +1,26 @@
 package Model;
 
-import Model.*;
-
 public abstract class DekoratorOperacji implements IOperacja {
-
-    protected String nrOperacji;
+    
     protected IOperacja operacja;
+    
+    public DekoratorOperacji(IOperacja operacja) {
+        if (operacja == null) {
+            throw new IllegalArgumentException("Operacja nie może być pusta");
+        }
+        this.operacja = operacja;
+    }
 
     public String dajNrOperacji() {
-        // TODO - implement DekoratorOperacji.dajNrOperacji
-        throw new UnsupportedOperationException();
+        return operacja.dajNrOperacji();
     }
 
     public Klient dajKlienta() {
-        // TODO - implement DekoratorOperacji.dajKlienta
-        throw new UnsupportedOperationException();
+        return operacja.dajKlienta();
     }
 
     public String opisz() {
-        // TODO - implement DekoratorOperacji.opisz
-        throw new UnsupportedOperationException();
+        return  operacja.opisz();
     }
-
+    
 }
