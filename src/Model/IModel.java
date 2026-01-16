@@ -40,4 +40,5 @@ public interface IModel {
      */
     boolean anulowanieOperacji(String nrOperacji);
 
+    void przelew(int nrRachunkuZ, int nrRachunkuNa, float kwota);
 }

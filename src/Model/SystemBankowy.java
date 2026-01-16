@@ -31,7 +31,7 @@ public class SystemBankowy {
      * @param nrOdbiorcy
      * @param kwota
      */
-    public boolean wykonajPrzelew(int nrNadawcy, int nrOdbiorcy, float kwota) {
+    public void wykonajPrzelew(int nrNadawcy, int nrOdbiorcy, float kwota) {
         // TODO - implement SystemBankowy.wykonajPrzelew
         throw new UnsupportedOperationException();
     }

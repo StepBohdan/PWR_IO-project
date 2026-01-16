@@ -1,6 +1,5 @@
 package Model;
 
-import java.lang.classfile.instruction.ReturnInstruction;
 import java.util.*;
 
 public class Model implements IModel {
@@ -93,5 +92,30 @@ public class Model implements IModel {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void przelew(int nrRachunkuZ, int nrRachunkuNa, float kwota) {
+        System.out.println("[Model] przelew(nrRachunkuZ=" + nrRachunkuZ + ", nrRachunkuNa=" + nrRachunkuNa + ", kwota=" + kwota + ")");
+        if (kwota <= 0) return;
+
+        float obecne = salda.getOrDefault(nrRachunkuZ, 0.0f);
+        if (obecne < kwota) return;
+
+        systemBankowy.wykonajPrzelew(nrRachunkuZ, nrRachunkuNa, kwota);
+
+        float noweZ = obecne - kwota;
+        salda.put(nrRachunkuZ, noweZ);
+
+        float noweNa = salda.getOrDefault(nrRachunkuNa, 0.0f) + kwota;
+        salda.put(nrRachunkuNa, noweNa);
+
+        String nrOperacji = "NROP-" + System.currentTimeMillis();
+        operacje.put(nrOperacji, "Przelew: -" + kwota + " z " + nrRachunkuZ + " na " + nrRachunkuNa);
+
+        historia.computeIfAbsent(nrRachunkuZ, k -> new ArrayList<>())
+                .add("[" + nrOperacji + "] Przelew wychodzący -" + kwota + " na " + nrRachunkuNa);
+        historia.computeIfAbsent(nrRachunkuNa, k -> new ArrayList<>())
+                .add("[" + nrOperacji + "] Przelew przychodzący +" + kwota + " od " + nrRachunkuZ);
     }
 }
