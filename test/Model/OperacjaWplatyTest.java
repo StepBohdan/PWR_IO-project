@@ -2,6 +2,7 @@ package Model;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,17 +25,32 @@ class OperacjaWplatyTest {
     }
 
     @Test
+    @DisplayName("Should return operation number")
     void dajNrOperacji() {
-        assertEquals("12345", operacjaWplaty.dajNrOperacji());
+        // When
+        String operationId = operacjaWplaty.dajNrOperacji();
+        
+        // Then
+        assertEquals("12345", operationId);
     }
 
     @Test
+    @DisplayName("Should return client")
     void dajKlienta() {
-        assertEquals(klient, operacjaWplaty.dajKlienta());
+        // When
+        Klient expectedClient = operacjaWplaty.dajKlienta();
+        
+        // Then
+        assertEquals(klient, expectedClient);
     }
 
     @Test
+    @DisplayName("Should describe operation")
     void opisz() {
-        assertEquals("Operacja wpłaty nr: 12345", operacjaWplaty.opisz());
+        // When
+        String desc = operacjaWplaty.opisz();
+        
+        // Then
+        assertEquals("Operacja wpłaty nr: 12345", desc);
     }
 }

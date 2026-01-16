@@ -11,6 +11,6 @@ public class FabrykaOperacjiWplaty implements IFabrykaOperacji {
 
     @Override
     public IOperacja utworzOperacje(String opis) {
-        return new OperacjaWplaty(klient, opis);
+        return new OperacjaWplaty("1", klient);
     }
 }

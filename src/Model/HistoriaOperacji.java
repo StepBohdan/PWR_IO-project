@@ -1,18 +1,21 @@
 package Model;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class HistoriaOperacji {
 
-    private IOperacja[] listaOperacji;
+    private final List<IOperacja> listaOperacji = new ArrayList<>();
 
     /**
      *
      * @param operacja
      */
     public boolean dodajOperacje(IOperacja operacja) {
-        // TODO - implement HistoriaOperacji.dodajOperacje
-        throw new UnsupportedOperationException();
+        if (operacja == null) {
+            return false;
+        }
+        return listaOperacji.add(operacja);
     }
 
     /**
@@ -20,18 +23,17 @@ public class HistoriaOperacji {
      * @param nrOperacji
      */
     public boolean usunOperacje(String nrOperacji) {
-        // TODO - implement HistoriaOperacji.usunOperacje
-        throw new UnsupportedOperationException();
+        return listaOperacji.removeIf(op -> op.dajNrOperacji().equals(nrOperacji));
     }
 
     public IOperacja[] dajHistorieOperacji() {
-        // TODO - implement HistoriaOperacji.dajHistorieOperacji
-        throw new UnsupportedOperationException();
+        return listaOperacji.toArray(new IOperacja[0]);
     }
 
     public String[] opisz() {
-        // TODO - implement HistoriaOperacji.opisz
-        throw new UnsupportedOperationException();
+        return listaOperacji.stream()
+                .map(IOperacja::opisz)
+                .toArray(String[]::new);
     }
 
 }

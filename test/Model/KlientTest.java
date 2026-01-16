@@ -2,7 +2,13 @@ package Model;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,36 +30,67 @@ class KlientTest {
     }
 
     @Test
+    @DisplayName("Should return first name")
     void dajImie() {
-        assertEquals("Jan", klient.dajImie());
+        // When
+        String name = klient.dajImie();
+        
+        // Then
+        assertEquals("Jan", name);
     }
 
     @Test
+    @DisplayName("Should return second name")
     void dajDrugieImie() {
-        assertEquals("Adam", klient.dajDrugieImie());
+        // When
+        String middleName = klient.dajDrugieImie();
+        
+        // Then
+        assertEquals("Adam", middleName);
     }
 
     @Test
+    @DisplayName("Should return last name")
     void dajNazwisko() {
-        assertEquals("Kowalski", klient.dajNazwisko());
+        // When
+        String lastName = klient.dajNazwisko();
+        
+        // Then
+        assertEquals("Kowalski", lastName);
     }
 
     @Test
+    @DisplayName("Should return account number")
     void dajNrRachunku() {
-        assertEquals(12345678, klient.dajNrRachunku());
+        // When
+        int invoiceNumber  = klient.dajNrRachunku();
+                
+        // Then
+        assertEquals(12345678, invoiceNumber);
     }
 
     @Test
+    @DisplayName("Should return balance")
     void dajSaldo() {
-        assertEquals(1000.0f, klient.dajSaldo());
+        // When
+        float balance = klient.dajSaldo();
+        
+        // Then
+        assertEquals(1000.0f, balance);
     }
 
-    @Test
-    void opisz() {
-        String expected = String.format("Klient: Jan Adam Kowalski%nNr rachunku: 12345678%nSaldo: 1000.00");
-        assertEquals(expected, klient.opisz());
+    private static Stream<Arguments> provideClientsAndExpectedStrings() {
+        return Stream.of(
+                Arguments.of(klient, String.format("Klient: Jan Adam Kowalski%nNr rachunku: 12345678%nSaldo: 1000.00")),
+                Arguments.of(klientBezDrugiegoImienia, String.format("Klient: Anna Nowak%nNr rachunku: 87654321%nSaldo: 2000.00"))
+        );
+    }
 
-        String expectedBezDrugiegoImienia = String.format("Klient: Anna Nowak%nNr rachunku: 87654321%nSaldo: 2000.00");
-        assertEquals(expectedBezDrugiegoImienia, klientBezDrugiegoImienia.opisz());
+    @ParameterizedTest
+    @MethodSource("provideClientsAndExpectedStrings")
+    @DisplayName("Should describe client")
+    void opisz(Klient client, String expected) {
+        // Then
+        assertEquals(expected, client.opisz());
     }
 }
