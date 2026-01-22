@@ -6,8 +6,7 @@ public class Model implements IModel {
 
     private IDAO dao;
     private SystemBankowy systemBankowy;
-
-    // простая “база” в памяти
+    
     private final Map<Integer, Float> salda = new HashMap<>();
     private final Map<String, String> operacje = new HashMap<>();
     private final Map<Integer, List<String>> historia = new HashMap<>();
@@ -15,10 +14,6 @@ public class Model implements IModel {
     public Model (IDAO dao, SystemBankowy systemBankowy) {
         this.dao = dao;
         this.systemBankowy = systemBankowy;
-//        // стартовые данные
-//        salda.put(0, 0.0f);
-//        historia.put(0, new ArrayList<>());
-//        System.out.println("[Model] init");
     }
 
     @Override
@@ -28,6 +23,9 @@ public class Model implements IModel {
         if (kwota <= 0) return false;
         
         boolean sukces = systemBankowy.wykonajWplate(nrRachunku, kwota);
+
+        float obecne = salda.getOrDefault(nrRachunku, 0.0f);
+        salda.put(nrRachunku, obecne + kwota);
 
         return sukces;
     }
@@ -100,7 +98,7 @@ public class Model implements IModel {
         if (kwota <= 0) return;
 
         float obecne = salda.getOrDefault(nrRachunkuZ, 0.0f);
-        if (obecne < kwota) return;
+//        if (obecne < kwota) return;
 
         systemBankowy.wykonajPrzelew(nrRachunkuZ, nrRachunkuNa, kwota);
 
