@@ -1,9 +1,6 @@
 package Model;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,6 +9,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class KlientTest {
 
     private static Klient klient;
@@ -30,6 +28,8 @@ class KlientTest {
     }
 
     @Test
+    @Order(1)
+    @Tag("model")
     @DisplayName("Should return first name")
     void dajImie() {
         // When
@@ -40,6 +40,8 @@ class KlientTest {
     }
 
     @Test
+    @Order(2)
+    @Tag("model")
     @DisplayName("Should return second name")
     void dajDrugieImie() {
         // When
@@ -50,6 +52,8 @@ class KlientTest {
     }
 
     @Test
+    @Order(3)
+    @Tag("model")
     @DisplayName("Should return last name")
     void dajNazwisko() {
         // When
@@ -60,6 +64,8 @@ class KlientTest {
     }
 
     @Test
+    @Order(4)
+    @Tag("model")
     @DisplayName("Should return account number")
     void dajNrRachunku() {
         // When
@@ -70,6 +76,8 @@ class KlientTest {
     }
 
     @Test
+    @Order(5)
+    @Tag("model")
     @DisplayName("Should return balance")
     void dajSaldo() {
         // When
@@ -87,6 +95,8 @@ class KlientTest {
     }
 
     @ParameterizedTest
+    @Order(6)
+    @Tag("model")
     @MethodSource("provideClientsAndExpectedStrings")
     @DisplayName("Should describe client")
     void opisz(Klient client, String expected) {

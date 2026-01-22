@@ -29,6 +29,7 @@ class MonitorTest {
 
     @Test
     @Order(1)
+    @Tag("controller")
     @DisplayName("Should display message")
     void wyswietl() {
         // Given
@@ -45,6 +46,7 @@ class MonitorTest {
     @ParameterizedTest
     @MethodSource("provideOpcjeForTest")
     @Order(2)
+    @Tag("controller")
     @DisplayName("Should handle different options scenarios")
     void wyswietlOpcje(String[] opcje, String expectedResult, String expectedOutput) {
         // Given

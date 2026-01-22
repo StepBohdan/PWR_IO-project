@@ -1,12 +1,10 @@
 package Model;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class OperacjaWplatyTest {
 
     private static OperacjaWplaty operacjaWplaty;
@@ -26,6 +24,8 @@ class OperacjaWplatyTest {
 
     @Test
     @DisplayName("Should return operation number")
+    @Order(1)
+    @Tag("model")
     void dajNrOperacji() {
         // When
         String operationId = operacjaWplaty.dajNrOperacji();
@@ -36,6 +36,8 @@ class OperacjaWplatyTest {
 
     @Test
     @DisplayName("Should return client")
+    @Order(2)
+    @Tag("model")
     void dajKlienta() {
         // When
         Klient expectedClient = operacjaWplaty.dajKlienta();
@@ -46,6 +48,8 @@ class OperacjaWplatyTest {
 
     @Test
     @DisplayName("Should describe operation")
+    @Order(3)
+    @Tag("model")
     void opisz() {
         // When
         String desc = operacjaWplaty.opisz();

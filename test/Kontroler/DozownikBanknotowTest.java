@@ -28,6 +28,7 @@ class DozownikBanknotowTest {
 
     @Test
     @Order(1)
+    @Tag("controller")
     @DisplayName("Should count banknotes and return correct amount")
     void zliczBanknoty() {
         // Given

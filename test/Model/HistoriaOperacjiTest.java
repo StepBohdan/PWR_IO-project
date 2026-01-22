@@ -20,6 +20,7 @@ class HistoriaOperacjiTest {
 
     @Test
     @Order(1)
+    @Tag("model")
     @DisplayName("Should add operation")
     void dodajOperacje() {
         // When
@@ -32,6 +33,7 @@ class HistoriaOperacjiTest {
     }
 
     @Order(3)
+    @Tag("model")
     @DisplayName("Should remove operation")
     @ParameterizedTest
     @CsvSource({
@@ -56,6 +58,7 @@ class HistoriaOperacjiTest {
 
     @Test
     @Order(2)
+    @Tag("model")
     @DisplayName("Should return operations history")
     void dajHistorieOperacji() {
         // Given
@@ -73,6 +76,7 @@ class HistoriaOperacjiTest {
 
     @Test
     @Order(4)
+    @Tag("model")
     @DisplayName("Should describe operations")
     void opisz() {
         // Given
