@@ -1,17 +1,14 @@
 package Kontroler;
 
-<<<<<<< HEAD
-=======
-import Kontroler.DozownikBanknotow;
->>>>>>> b89dd54 (zestawy testów)
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestMethodOrder(OrderAnnotation.class)
 class DozownikBanknotowTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -30,14 +27,11 @@ class DozownikBanknotowTest {
         System.setOut(originalOut);
     }
 
-<<<<<<< HEAD
     @Test
-=======
-    @Tag("controller")
-    @Tag("fast")
->>>>>>> b89dd54 (zestawy testów)
     @Order(1)
     @DisplayName("Should count banknotes and return correct amount")
+    @Tag("controller")
+    @Tag("fast")
     void zliczBanknoty() {
         // Given
         float expectedAmount = 20.0f;
