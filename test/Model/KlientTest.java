@@ -1,9 +1,14 @@
 package Model;
 
+<<<<<<< HEAD
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+=======
+import Model.Klient;
+import org.junit.jupiter.api.*;
+>>>>>>> b89dd54 (zestawy testów)
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -31,6 +36,11 @@ class KlientTest {
 
     @Test
     @DisplayName("Should return first name")
+<<<<<<< HEAD
+=======
+    @Tag("entity")
+    @Tag("fast")
+>>>>>>> b89dd54 (zestawy testów)
     void dajImie() {
         // When
         String name = klient.dajImie();
@@ -41,6 +51,11 @@ class KlientTest {
 
     @Test
     @DisplayName("Should return second name")
+<<<<<<< HEAD
+=======
+    @Tag("entity")
+    @Tag("fast")
+>>>>>>> b89dd54 (zestawy testów)
     void dajDrugieImie() {
         // When
         String middleName = klient.dajDrugieImie();
@@ -51,6 +66,11 @@ class KlientTest {
 
     @Test
     @DisplayName("Should return last name")
+<<<<<<< HEAD
+=======
+    @Tag("entity")
+    @Tag("fast")
+>>>>>>> b89dd54 (zestawy testów)
     void dajNazwisko() {
         // When
         String lastName = klient.dajNazwisko();
@@ -61,6 +81,12 @@ class KlientTest {
 
     @Test
     @DisplayName("Should return account number")
+<<<<<<< HEAD
+=======
+    @Tag("entity")
+    @Tag("fast")
+
+>>>>>>> b89dd54 (zestawy testów)
     void dajNrRachunku() {
         // When
         int invoiceNumber  = klient.dajNrRachunku();
@@ -71,6 +97,11 @@ class KlientTest {
 
     @Test
     @DisplayName("Should return balance")
+<<<<<<< HEAD
+=======
+    @Tag("entity")
+    @Tag("fast")
+>>>>>>> b89dd54 (zestawy testów)
     void dajSaldo() {
         // When
         float balance = klient.dajSaldo();
@@ -81,14 +112,24 @@ class KlientTest {
 
     private static Stream<Arguments> provideClientsAndExpectedStrings() {
         return Stream.of(
+<<<<<<< HEAD
                 Arguments.of(klient, String.format("Klient: Jan Adam Kowalski%nNr rachunku: 12345678%nSaldo: 1000.00")),
                 Arguments.of(klientBezDrugiegoImienia, String.format("Klient: Anna Nowak%nNr rachunku: 87654321%nSaldo: 2000.00"))
+=======
+                Arguments.of(klient, String.format("Klient: Jan Adam Kowalski%nNr rachunku: 12345678%nSaldo: 1000,00")),
+                Arguments.of(klientBezDrugiegoImienia, String.format("Klient: Anna Nowak%nNr rachunku: 87654321%nSaldo: 2000,00"))
+>>>>>>> b89dd54 (zestawy testów)
         );
     }
 
     @ParameterizedTest
     @MethodSource("provideClientsAndExpectedStrings")
     @DisplayName("Should describe client")
+<<<<<<< HEAD
+=======
+    @Tag("entity")
+    @Tag("format")
+>>>>>>> b89dd54 (zestawy testów)
     void opisz(Klient client, String expected) {
         // Then
         assertEquals(expected, client.opisz());

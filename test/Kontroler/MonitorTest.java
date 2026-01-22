@@ -1,5 +1,9 @@
 package Kontroler;
 
+<<<<<<< HEAD
+=======
+import Kontroler.Monitor;
+>>>>>>> b89dd54 (zestawy testów)
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -30,6 +34,11 @@ class MonitorTest {
     @Test
     @Order(1)
     @DisplayName("Should display message")
+<<<<<<< HEAD
+=======
+    @Tag("controller")
+    @Tag("fast")
+>>>>>>> b89dd54 (zestawy testów)
     void wyswietl() {
         // Given
         Monitor monitor = new Monitor();
@@ -46,6 +55,12 @@ class MonitorTest {
     @MethodSource("provideOpcjeForTest")
     @Order(2)
     @DisplayName("Should handle different options scenarios")
+<<<<<<< HEAD
+=======
+    @Tag("controller")
+    @Tag("fast")
+    @Tag("menu")
+>>>>>>> b89dd54 (zestawy testów)
     void wyswietlOpcje(String[] opcje, String expectedResult, String expectedOutput) {
         // Given
         Monitor monitor = new Monitor();

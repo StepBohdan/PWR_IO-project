@@ -1,9 +1,15 @@
 package Model;
 
+<<<<<<< HEAD
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+=======
+import Model.Klient;
+import Model.OperacjaWplaty;
+import org.junit.jupiter.api.*;
+>>>>>>> b89dd54 (zestawy testów)
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,6 +32,11 @@ class OperacjaWplatyTest {
 
     @Test
     @DisplayName("Should return operation number")
+<<<<<<< HEAD
+=======
+    @Tag("entity")
+    @Tag("fast")
+>>>>>>> b89dd54 (zestawy testów)
     void dajNrOperacji() {
         // When
         String operationId = operacjaWplaty.dajNrOperacji();
@@ -36,6 +47,11 @@ class OperacjaWplatyTest {
 
     @Test
     @DisplayName("Should return client")
+<<<<<<< HEAD
+=======
+    @Tag("entity")
+    @Tag("fast")
+>>>>>>> b89dd54 (zestawy testów)
     void dajKlienta() {
         // When
         Klient expectedClient = operacjaWplaty.dajKlienta();
@@ -46,6 +62,12 @@ class OperacjaWplatyTest {
 
     @Test
     @DisplayName("Should describe operation")
+<<<<<<< HEAD
+=======
+    @Tag("entity")
+    @Tag("fast")
+    @Tag("format")
+>>>>>>> b89dd54 (zestawy testów)
     void opisz() {
         // When
         String desc = operacjaWplaty.opisz();

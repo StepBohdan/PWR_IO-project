@@ -1,5 +1,9 @@
 package Kontroler;
 
+<<<<<<< HEAD
+=======
+import Kontroler.DozownikBanknotow;
+>>>>>>> b89dd54 (zestawy testów)
 import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
@@ -26,7 +30,12 @@ class DozownikBanknotowTest {
         System.setOut(originalOut);
     }
 
+<<<<<<< HEAD
     @Test
+=======
+    @Tag("controller")
+    @Tag("fast")
+>>>>>>> b89dd54 (zestawy testów)
     @Order(1)
     @DisplayName("Should count banknotes and return correct amount")
     void zliczBanknoty() {

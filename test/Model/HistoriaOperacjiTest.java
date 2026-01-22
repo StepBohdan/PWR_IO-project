@@ -1,5 +1,11 @@
 package Model;
 
+<<<<<<< HEAD
+=======
+import Model.HistoriaOperacji;
+import Model.IOperacja;
+import Model.OperacjaWplaty;
+>>>>>>> b89dd54 (zestawy testów)
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -21,6 +27,11 @@ class HistoriaOperacjiTest {
     @Test
     @Order(1)
     @DisplayName("Should add operation")
+<<<<<<< HEAD
+=======
+    @Tag("entity")
+    @Tag("fast")
+>>>>>>> b89dd54 (zestawy testów)
     void dodajOperacje() {
         // When
         boolean success = historiaOperacji.dodajOperacje(operacja1);
@@ -38,6 +49,11 @@ class HistoriaOperacjiTest {
             "1, true",
             "3, false"
     })
+<<<<<<< HEAD
+=======
+    @Tag("entity")
+    @Tag("validation")
+>>>>>>> b89dd54 (zestawy testów)
     void usunOperacje(String nrOperacjiDoUsuniecia, boolean expectedResult) {
         // Given
         historiaOperacji.dodajOperacje(operacja1);
@@ -57,6 +73,11 @@ class HistoriaOperacjiTest {
     @Test
     @Order(2)
     @DisplayName("Should return operations history")
+<<<<<<< HEAD
+=======
+    @Tag("entity")
+    @Tag("fast")
+>>>>>>> b89dd54 (zestawy testów)
     void dajHistorieOperacji() {
         // Given
         historiaOperacji.dodajOperacje(operacja1);
@@ -74,6 +95,11 @@ class HistoriaOperacjiTest {
     @Test
     @Order(4)
     @DisplayName("Should describe operations")
+<<<<<<< HEAD
+=======
+    @Tag("entity")
+    @Tag("fast")
+>>>>>>> b89dd54 (zestawy testów)
     void opisz() {
         // Given
         historiaOperacji.dodajOperacje(operacja1);
