@@ -32,6 +32,7 @@ class ModelTest {
     @Order(2)
     @DisplayName("should be able to deposit")
     @Tag("model")
+    @Tag("transaction")
     void wplacanieSrodkow() {
         // Given
         when(systemBankowy.wykonajWplate(Account1, 100.0f)).thenReturn(true);
@@ -48,6 +49,7 @@ class ModelTest {
     @Test
     @Order(3)
     @Tag("model")
+    @Tag("transaction")
     @DisplayName("should not be able to deposit negative amount")
     void wplacanieSrodkowUjemne() {
         // Given
@@ -69,6 +71,7 @@ class ModelTest {
     @Test
     @Order(4)
     @Tag("model")
+    @Tag("transaction")
     @DisplayName("should be able to withdraw")
     void wyplacanieSrodkow() {
         // Given
@@ -87,6 +90,7 @@ class ModelTest {
     @Test
     @Order(5)
     @Tag("model")
+    @Tag("transaction")
     @DisplayName("should not be able to withdraw negative amount")
     void wyplacanieSrodkowUjemne() {
         // Given
@@ -153,6 +157,7 @@ class ModelTest {
     @Test
     @Order(8)
     @Tag("model")
+    @Tag("transaction")
     @DisplayName("should be able to cancel operation")
     void anulowanieOperacji() {
         // Given
@@ -169,6 +174,7 @@ class ModelTest {
     @Test
     @Order(9)
     @Tag("model")
+    @Tag("transaction")
     @DisplayName("should be able to transfer money to another account")
     void przelew() {
         // Given
