@@ -124,8 +124,7 @@ class ModelTest {
     void pobieranieDanychOperacji() {
         // Given
         String nrOperacji = "NROP-12345";
-        Klient klient = new Klient(Account1, "test", "", "test", 0f);
-        IOperacja operacja = new OperacjaWplaty(nrOperacji, klient);
+        IOperacja operacja = mock(IOperacja.class);
         when(systemBankowy.pobierzDaneOperacji(nrOperacji)).thenReturn(operacja);
         
         // When
@@ -141,7 +140,7 @@ class ModelTest {
     @DisplayName("should be able to get transaction history")
     void pobieranieHistorii() {
         // Given
-        HistoriaOperacji historiaOperacji = new HistoriaOperacji();
+        HistoriaOperacji historiaOperacji = mock(HistoriaOperacji.class);
         when(systemBankowy.pobierzHistorieOperacji(Account1)).thenReturn(historiaOperacji);
         
         // When
