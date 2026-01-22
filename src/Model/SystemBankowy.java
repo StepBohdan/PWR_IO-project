@@ -64,5 +64,15 @@ public class SystemBankowy {
         // TODO - implement SystemBankowy.pobierzHistorieOperacji
         throw new UnsupportedOperationException();
     }
+    
+    public IOperacja pobierzDaneOperacji(String nrOperacji) {
+        // TODO - implement SystemBankowy.pobierzDaneOperacji
+        throw new UnsupportedOperationException();
+    }
+    
+    public void anulujOperacje(String nrOperacji) {
+        // TODO - implement SystemBankowy.anulujOperacje
+        throw new UnsupportedOperationException();
+    }
 
 }

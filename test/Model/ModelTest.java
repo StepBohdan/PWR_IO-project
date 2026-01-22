@@ -11,9 +11,9 @@ import static org.mockito.Mockito.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ModelTest {
 
-    @Mock
-    private IDAO dao;
-
+    private static final int Account1 = 1;
+    private static final int Account2 = 2;
+    
     @Mock
     private SystemBankowy systemBankowy;
 
@@ -23,81 +23,161 @@ class ModelTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-    }
-
-    @Test
-    @Order(1)
-    @Tag("model")
-    void wplacanieSrodkow() {
-        when(systemBankowy.wykonajWplate(1, 100.0f)).thenReturn(true);
-        assertTrue(model.wplacanieSrodkow(1, 100.0f));
-        verify(systemBankowy).wykonajWplate(1, 100.0f);
-
-        assertFalse(model.wplacanieSrodkow(1, -50.0f));
-        verify(systemBankowy, never()).wykonajWplate(1, -50.0f);
+        Klient klient = mock(Klient.class);
+        when(klient.dajSaldo()).thenReturn(0f);
+        when(systemBankowy.pobierzKlienta(anyInt())).thenReturn(klient);
     }
 
     @Test
     @Order(2)
+    @DisplayName("should be able to deposit")
     @Tag("model")
-    void wyplacanieSrodkow() {
-        assertFalse(model.wyplacanieSrodkow(1, 100.0f));
+    void wplacanieSrodkow() {
+        // Given
+        when(systemBankowy.wykonajWplate(Account1, 100.0f)).thenReturn(true);
         
-        model.wplacanieSrodkow(1, 200.0f);
-        assertTrue(model.wyplacanieSrodkow(1, 100.0f));
-        assertEquals("Nr rachunku: 1\nSaldo: 100.0", model.pobieranieDanychKonta(1));
+        // When
+        boolean result = model.wplacanieSrodkow(Account1, 100.0f);
+        
+        // Then
+        assertTrue(result);
+        assertEquals("Nr rachunku: 1\nSaldo: 100.0", model.pobieranieDanychKonta(Account1));
+        verify(systemBankowy).wykonajWplate(Account1, 100.0f);
     }
 
     @Test
     @Order(3)
     @Tag("model")
-    void pobieranieDanychKonta() {
-        assertEquals("Nr rachunku: 1\nSaldo: 0.0", model.pobieranieDanychKonta(1));
+    @DisplayName("should not be able to deposit negative amount")
+    void wplacanieSrodkowUjemne() {
+        // Given
+        // (initial setup in setUp method)
         
-        model.wplacanieSrodkow(1, 150.0f);
-        model.wyplacanieSrodkow(1, 50.0f);
-        assertEquals("Nr rachunku: 1\nSaldo: 100.0", model.pobieranieDanychKonta(1));
+        // When
+        boolean result1 = model.wplacanieSrodkow(Account1, 0.0f);
+        boolean result2 = model.wplacanieSrodkow(Account1, -50.0f);
+        
+        // Then
+        assertFalse(result1);
+        assertFalse(result2);
+        assertEquals("Nr rachunku: 1\nSaldo: 0.0", model.pobieranieDanychKonta(Account1));
+
+        verify(systemBankowy, never()).wykonajWplate(Account1, 0.0f);
+        verify(systemBankowy, never()).wykonajWplate(Account1, -50.0f);
     }
 
     @Test
     @Order(4)
     @Tag("model")
-    void pobieranieDanychOperacji() {
-        String nrOperacji = "NROP-12345";
-        assertEquals("Brak danych dla operacji: " + nrOperacji, model.pobieranieDanychOperacji(nrOperacji));
+    @DisplayName("should be able to withdraw")
+    void wyplacanieSrodkow() {
+        // Given
+        when(systemBankowy.wykonajWyplate(Account1, 100.0f)).thenReturn(true);
+        model.wplacanieSrodkow(Account1, 200.0f);
         
-        model.wplacanieSrodkow(1, 100.0f);
-        model.wyplacanieSrodkow(1, 50.0f);
+        // When
+        boolean result = model.wyplacanieSrodkow(Account1, 100.0f);
+        
+        // Then
+        assertTrue(result);
+        assertEquals("Nr rachunku: 1\nSaldo: 100.0", model.pobieranieDanychKonta(Account1));
+        verify(systemBankowy).wykonajWyplate(Account1, 100.0f);
     }
-
+    
     @Test
     @Order(5)
     @Tag("model")
-    void pobieranieHistorii() {
-        assertArrayEquals(new String[0], model.pobieranieHistorii(1));
+    @DisplayName("should not be able to withdraw negative amount")
+    void wyplacanieSrodkowUjemne() {
+        // Given
+        // (initial setup in setUp method)
         
-        model.wplacanieSrodkow(1, 200.0f);
-        model.wyplacanieSrodkow(1, 100.0f);
-        assertEquals(1, model.pobieranieHistorii(1).length);
+        // When
+        boolean result = model.wyplacanieSrodkow(Account1, -100.0f);
+        
+        // Then
+        assertFalse(result);
+        assertEquals("Nr rachunku: 1\nSaldo: 0.0", model.pobieranieDanychKonta(Account1));
+        verify(systemBankowy, never()).wykonajWyplate(1, -100.0f);
+    }
+
+    @Test
+    @Order(1)
+    @Tag("model")
+    @DisplayName("should be able to get account balance")
+    void pobieranieDanychKonta() {
+        // Given
+        // (initial setup in setUp method)
+        
+        // When
+        String result = model.pobieranieDanychKonta(Account1);
+        
+        // Then
+        assertEquals("Nr rachunku: 1\nSaldo: 0.0", result);
+        verify(systemBankowy).pobierzKlienta(Account1);
     }
 
     @Test
     @Order(6)
     @Tag("model")
-    void anulowanieOperacji() {
+    @DisplayName("should be able to get operation info")
+    void pobieranieDanychOperacji() {
+        // Given
         String nrOperacji = "NROP-12345";
-        assertFalse(model.anulowanieOperacji(nrOperacji));
+        IOperacja operacja = mock(IOperacja.class);
+        when(systemBankowy.pobierzDaneOperacji(nrOperacji)).thenReturn(operacja);
         
-        model.wplacanieSrodkow(1, 100.0f);
-        model.wyplacanieSrodkow(1, 50.0f);
+        // When
+        model.pobieranieDanychOperacji(nrOperacji);
+        
+        // Then
+        verify(systemBankowy).pobierzDaneOperacji(nrOperacji);
     }
 
     @Test
     @Order(7)
     @Tag("model")
+    @DisplayName("should be able to get transaction history")
+    void pobieranieHistorii() {
+        // Given
+        HistoriaOperacji historiaOperacji = mock(HistoriaOperacji.class);
+        when(systemBankowy.pobierzHistorieOperacji(Account1)).thenReturn(historiaOperacji);
+        
+        // When
+        model.pobieranieHistorii(Account1);
+        
+        // Then
+        verify(systemBankowy).pobierzHistorieOperacji(Account1);
+    }
+
+    @Test
+    @Order(8)
+    @Tag("model")
+    @DisplayName("should be able to cancel operation")
+    void anulowanieOperacji() {
+        // Given
+        String nrOperacji = "NROP-12345";
+        doNothing().when(systemBankowy).anulujOperacje(nrOperacji);
+        
+        // When
+        model.anulowanieOperacji(nrOperacji);
+        
+        // Then
+        verify(systemBankowy).anulujOperacje(nrOperacji);
+    }
+
+    @Test
+    @Order(9)
+    @Tag("model")
+    @DisplayName("should be able to transfer money to another account")
     void przelew() {
-        doNothing().when(systemBankowy).wykonajPrzelew(1, 2, 100.0f);
-        model.przelew(1, 2, 100.0f);
-        verify(systemBankowy, times(1)).wykonajPrzelew(1, 2, 100.0f);
+        // Given
+        doNothing().when(systemBankowy).wykonajPrzelew(Account1, Account2, 100.0f);
+        
+        // When
+        model.przelew(Account1, Account2, 100.0f);
+        
+        // Then
+        verify(systemBankowy, times(1)).wykonajPrzelew(Account1, Account2, 100.0f);
     }
 }
