@@ -25,16 +25,17 @@ public class AnulowanieOperacji {
     public void anuluj(String nrOperacji) {
         System.out.println("[AnulowanieOperacji] anuluj() START nrOperacji=" + nrOperacji);
 
-        boolean sukces = model.anulowanieOperacji(nrOperacji);
-        System.out.println("[AnulowanieOperacji] model.anulowanieOperacji -> sukces=" + sukces);
+//        boolean sukces = model.anulowanieOperacji(nrOperacji);
+        model.anulowanieOperacji(nrOperacji);
+//        System.out.println("[AnulowanieOperacji] model.anulowanieOperacji -> sukces=" + sukces);
 
-        if (sukces) {
-            System.out.println("[AnulowanieOperacji] anulowanie POWIODŁO SIĘ -> komunikat na monitor");
-            monitor.wyswietl("Operacja została anulowana.");
-        } else {
-            System.out.println("[AnulowanieOperacji] anulowanie NIEUDANE -> komunikat na monitor");
-            monitor.wyswietl("Nie udało się anulować operacji: " + nrOperacji);
-        }
+//        if (sukces) {
+//            System.out.println("[AnulowanieOperacji] anulowanie POWIODŁO SIĘ -> komunikat na monitor");
+//            monitor.wyswietl("Operacja została anulowana.");
+//        } else {
+//            System.out.println("[AnulowanieOperacji] anulowanie NIEUDANE -> komunikat na monitor");
+//            monitor.wyswietl("Nie udało się anulować operacji: " + nrOperacji);
+//        }
 
         System.out.println("[AnulowanieOperacji] usuńKarte()");
         czytnik.usunKarte();

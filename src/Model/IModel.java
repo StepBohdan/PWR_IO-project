@@ -38,7 +38,7 @@ public interface IModel {
      *
      * @param nrOperacji
      */
-    boolean anulowanieOperacji(String nrOperacji);
+    void anulowanieOperacji(String nrOperacji);
 
     void przelew(int nrRachunkuZ, int nrRachunkuNa, float kwota);
 }

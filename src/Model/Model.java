@@ -1,5 +1,6 @@
 package Model;
 
+import java.lang.constant.Constable;
 import java.util.*;
 
 public class Model implements IModel {
@@ -48,7 +49,9 @@ public class Model implements IModel {
         historia.computeIfAbsent(nrRachunku, k -> new ArrayList<>())
                 .add("[" + nrOperacji + "] Wypłata -" + kwota + " => saldo: " + nowe);
 
-        return true;
+        boolean sukces = systemBankowy.wykonajWyplate(nrRachunku, kwota);
+        
+        return sukces;
     }
 
     @Override
@@ -56,12 +59,14 @@ public class Model implements IModel {
         System.out.println("[Model] pobieranieDanychKonta(nrRachunku=" + nrRachunku + ")");
 
         float saldo = salda.getOrDefault(nrRachunku, 0.0f);
+        float saldoTest = systemBankowy.pobierzKlienta(nrRachunku).dajSaldo();
         return "Nr rachunku: " + nrRachunku + "\nSaldo: " + saldo;
     }
 
     @Override
     public String pobieranieDanychOperacji(String nrOperacji) {
         System.out.println("[Model] pobieranieDanychOperacji(nrOperacji=" + nrOperacji + ")");
+        IOperacja operacja = systemBankowy.pobierzDaneOperacji(nrOperacji);
         return operacje.getOrDefault(nrOperacji, "Brak danych dla operacji: " + nrOperacji);
     }
 
@@ -77,19 +82,19 @@ public class Model implements IModel {
         }
 
         List<String> h = historia.getOrDefault(nr, List.of());
+        HistoriaOperacji historiaOperacji = systemBankowy.pobierzHistorieOperacji(nrRachunku);
         return h.toArray(new String[0]);
     }
 
     @Override
-    public boolean anulowanieOperacji(String nrOperacji) {
+    public void anulowanieOperacji(String nrOperacji) {
         System.out.println("[Model] anulowanieOperacji(nrOperacji=" + nrOperacji + ")");
-
-        // минимальная заглушка: если операция известна — “анулируем”
+        
         if (operacje.containsKey(nrOperacji)) {
             operacje.put(nrOperacji, operacje.get(nrOperacji) + " [ANULOWANO]");
-            return true;
         }
-        return false;
+        
+        systemBankowy.anulujOperacje(nrOperacji);
     }
 
     @Override
