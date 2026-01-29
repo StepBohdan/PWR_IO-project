@@ -1,9 +1,6 @@
 package TestyFitnesse;
 
-import Kontroler.DozownikBanknotow;
-import Kontroler.Drukarka;
-import Kontroler.KontrolerKlienta;
-import Kontroler.Monitor;
+import Kontroler.*;
 import Model.DAO;
 import Model.Model;
 import Model.SystemBankowy;
@@ -16,6 +13,7 @@ public class SetUp extends Fixture {
     static Drukarka drukarka;
     static DozownikBanknotow dozownik;
     static Monitor monitor;
+    static CzytnikKart czytnikKart;
     
     public SetUp() {
         dao = new DAO();
@@ -24,6 +22,7 @@ public class SetUp extends Fixture {
         drukarka = new Drukarka();
         dozownik = new DozownikBanknotow();
         monitor = new Monitor();
+        czytnikKart = new CzytnikKart();
     }
 
     public static void ustawKwote(float kwota) {

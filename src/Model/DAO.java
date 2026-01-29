@@ -5,10 +5,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DAO implements IDAO {
     private final Map<Integer, Float> saldo = new ConcurrentHashMap<>();
+    private final Map<String, Boolean> operacje = new ConcurrentHashMap<>();
 
     public DAO() {
         saldo.put(1, 100.0f);
         saldo.put(2, 0.0f);
+
+        operacje.put("OP-1", true);
+        operacje.put("OP-2", true);
     }
 
     /**
@@ -74,17 +78,22 @@ public class DAO implements IDAO {
      * @param operacja
      */
     public void dodajOperacje(String operacja) {
-        // TODO - implement DAO.dodajOperacje
-        throw new UnsupportedOperationException();
+        operacje.put(operacja, true);
+    }
+
+    @Override
+    public boolean pobierzOperacje(String nrOperacji) {
+        return operacje.getOrDefault(nrOperacji, false);
     }
 
     /**
      *
      * @param nrOperacji
      */
-    public void usunOperacja(int nrOperacji) {
-        // TODO - implement DAO.usunOperacja
-        throw new UnsupportedOperationException();
+    public void usunOperacja(String nrOperacji) {
+        if (operacje.containsKey(nrOperacji)) {
+            operacje.put(nrOperacji, false);
+        }
     }
 
 }

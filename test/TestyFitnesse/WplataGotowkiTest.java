@@ -8,7 +8,7 @@ public class WplataGotowkiTest extends ColumnFixture {
     float kwota;
     
     /*
-     * Operacja testującą realizację PU01
+     * Operacja testującą realizację PU02
      * @return true, jeśli saldo klienta powiększyło się o podaną kwotę
      * po wykonaniu operacji testowanej
      * (Klient musi istnieć)

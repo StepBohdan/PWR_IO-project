@@ -77,8 +77,7 @@ public class SystemBankowy {
     }
     
     public void anulujOperacje(String nrOperacji) {
-        // TODO - implement SystemBankowy.anulujOperacje
-        throw new UnsupportedOperationException();
+        dao.usunOperacja(nrOperacji);
     }
 
 }

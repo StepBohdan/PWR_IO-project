@@ -14,6 +14,8 @@ public interface IDAO {
      */
     void dodajOperacje(String operacja);
     
+    boolean pobierzOperacje(String nrOperacji);
+    
     void dodajSaldo(int nrKlienta, float kwota);
     
     boolean istniejeKonto(int nrKlienta);
@@ -47,6 +49,6 @@ public interface IDAO {
      *
      * @param nrOperacji
      */
-    void usunOperacja(int nrOperacji);
+    void usunOperacja(String nrOperacji);
 
 }
