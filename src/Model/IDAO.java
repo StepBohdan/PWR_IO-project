@@ -13,6 +13,10 @@ public interface IDAO {
      * @param operacja
      */
     void dodajOperacje(String operacja);
+    
+    void dodajSaldo(int nrKlienta, float kwota);
+    
+    boolean istniejeKonto(int nrKlienta);
 
     /**
      *

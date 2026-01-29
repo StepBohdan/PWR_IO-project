@@ -1,10 +1,14 @@
 package Model;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class DAO implements IDAO {
+    private final Map<Integer, Float> saldo = new ConcurrentHashMap<>();
 
     public DAO() {
-        // TODO - implement DAO.DAO
-        throw new UnsupportedOperationException();
+        saldo.put(1, 100.0f);
+        saldo.put(2, 0.0f);
     }
 
     /**
@@ -23,6 +27,18 @@ public class DAO implements IDAO {
     public String pobierzKlienta(int nrKlienta) {
         // TODO - implement DAO.pobierzKlienta
         throw new UnsupportedOperationException();
+    }
+    
+    public float pobierzSaldo(int nrKlienta) {
+        return saldo.getOrDefault(nrKlienta, 0.0f);
+    }
+
+    public void dodajSaldo(int nrKlienta, float kwota) {
+        saldo.put(nrKlienta, pobierzSaldo(nrKlienta) + kwota);
+    }
+    
+    public boolean istniejeKonto(int nrKlienta) {
+        return saldo.containsKey(nrKlienta);
     }
 
     /**

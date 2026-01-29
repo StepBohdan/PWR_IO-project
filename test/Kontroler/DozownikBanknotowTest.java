@@ -36,6 +36,7 @@ class DozownikBanknotowTest {
         float expectedAmount = 20.0f;
 
         // When
+        dozownikBanknotow.ustawKwote(20.0f);
         float result = dozownikBanknotow.zliczBanknoty();
 
         // Then
