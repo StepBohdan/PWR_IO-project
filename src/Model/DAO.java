@@ -1,10 +1,18 @@
 package Model;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class DAO implements IDAO {
+    private final Map<Integer, Float> saldo = new ConcurrentHashMap<>();
+    private final Map<String, Boolean> operacje = new ConcurrentHashMap<>();
 
     public DAO() {
-        // TODO - implement DAO.DAO
-        throw new UnsupportedOperationException();
+        saldo.put(1, 100.0f);
+        saldo.put(2, 0.0f);
+
+        operacje.put("OP-1", true);
+        operacje.put("OP-2", true);
     }
 
     /**
@@ -23,6 +31,18 @@ public class DAO implements IDAO {
     public String pobierzKlienta(int nrKlienta) {
         // TODO - implement DAO.pobierzKlienta
         throw new UnsupportedOperationException();
+    }
+    
+    public float pobierzSaldo(int nrKlienta) {
+        return saldo.getOrDefault(nrKlienta, 0.0f);
+    }
+
+    public void dodajSaldo(int nrKlienta, float kwota) {
+        saldo.put(nrKlienta, pobierzSaldo(nrKlienta) + kwota);
+    }
+    
+    public boolean istniejeKonto(int nrKlienta) {
+        return saldo.containsKey(nrKlienta);
     }
 
     /**
@@ -58,17 +78,22 @@ public class DAO implements IDAO {
      * @param operacja
      */
     public void dodajOperacje(String operacja) {
-        // TODO - implement DAO.dodajOperacje
-        throw new UnsupportedOperationException();
+        operacje.put(operacja, true);
+    }
+
+    @Override
+    public boolean pobierzOperacje(String nrOperacji) {
+        return operacje.getOrDefault(nrOperacji, false);
     }
 
     /**
      *
      * @param nrOperacji
      */
-    public void usunOperacja(int nrOperacji) {
-        // TODO - implement DAO.usunOperacja
-        throw new UnsupportedOperationException();
+    public void usunOperacja(String nrOperacji) {
+        if (operacje.containsKey(nrOperacji)) {
+            operacje.put(nrOperacji, false);
+        }
     }
 
 }

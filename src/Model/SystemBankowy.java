@@ -12,8 +12,12 @@ public class SystemBankowy {
      * @param dao
      */
     public SystemBankowy(IDAO dao) {
-        // TODO - implement SystemBankowy.SystemBankowy
-        throw new UnsupportedOperationException();
+        this.dao = dao;
+        this.klienci = new Klient[] {
+                new Klient(1, "test", "", "test", 0.0f),
+                new Klient(2, "test2", "test2", "test2", 0.0f)
+        };
+        this.historiiOperacji = new HistoriaOperacji[0];
     }
 
     /**
@@ -42,8 +46,11 @@ public class SystemBankowy {
      * @param kwota
      */
     public boolean wykonajWplate(int nrRachunku, float kwota) {
-        // TODO - implement SystemBankowy.wykojWplate
-        throw new UnsupportedOperationException();
+        if (kwota <= 0) return false;
+        if (!dao.istniejeKonto(nrRachunku)) return false;
+        
+        dao.dodajSaldo(nrRachunku, kwota);
+        return true;
     }
 
     /**
@@ -66,13 +73,11 @@ public class SystemBankowy {
     }
     
     public IOperacja pobierzDaneOperacji(String nrOperacji) {
-        // TODO - implement SystemBankowy.pobierzDaneOperacji
-        throw new UnsupportedOperationException();
+        return new OperacjaWplaty(nrOperacji, klienci[0]);
     }
     
     public void anulujOperacje(String nrOperacji) {
-        // TODO - implement SystemBankowy.anulujOperacje
-        throw new UnsupportedOperationException();
+        dao.usunOperacja(nrOperacji);
     }
 
 }
